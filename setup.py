@@ -13,10 +13,14 @@ except ImportError:
     import ez_setup
     ez_setup.use_setuptools()
     from setuptools import find_packages
+    
+import pip
+with open("requirements.txt", "r") as f:
+    for line in f:
+        pip.main(['install', line])
 
 from numpy.distutils.core import Extension as Ext
 from numpy.distutils.core import setup
-import pip
 
 __version__ = "1.4"
 __project__ = "FisherExact"
@@ -49,11 +53,6 @@ def setup_package():
     print("\nVersion : %s\n" % __version__)
 
     fortran_extnsion = configuration()
-    
-    
-    with open("requirements.txt", "r") as f:
-        for line in f:
-            pip.main(['install', line])
 
     setup(
         name=__project__,
