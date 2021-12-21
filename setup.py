@@ -8,16 +8,21 @@ import os
 import sys
 from distutils import spawn
 try:
-    from setuptools import find_packages, dist
-    dist.Distribution().fetch_build_eggs(['numpy>=1.8.0'])
+    from setuptools import find_packages
+    
 except ImportError:
     import ez_setup
     ez_setup.use_setuptools()
     from setuptools import find_packages
+    
 
+setuptools.setup(
+    setup_requires=[
+        'numpy'
+    ],)
 from numpy.distutils.core import Extension as Ext
 from numpy.distutils.core import setup
-    
+
 __version__ = "1.4"
 __project__ = "FisherExact"
 __author__ = "Emmanuel Noutahi"
