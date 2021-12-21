@@ -18,9 +18,8 @@ import pip
 with open("requirements.txt", "r") as f:
     for line in f:
         pip.main(['install', line])
-
-from numpy.distutils.core import Extension as Ext
-from numpy.distutils.core import setup
+        from numpy.distutils.core import Extension as Ext
+        from numpy.distutils.core import setup
 
 __version__ = "1.4"
 __project__ = "FisherExact"
