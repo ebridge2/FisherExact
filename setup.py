@@ -17,7 +17,7 @@ except ImportError:
     
 try:
     import numpy
-except ImportError;
+except ImportError:
     from setuptools import dist
     dist.Distribution().fetch_build_eggs(['numpy>=1.8.0'])
     
