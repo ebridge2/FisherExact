@@ -22,6 +22,9 @@ except ImportError:
     import subprocess
     subprocess.check_call([sys.executable, "-m", "pip", "install", "numpy>=1.8.0"])
 
+from numpy.distutils.core import Extension as Ext
+from numpy.distutils.core import setup
+
 __version__ = "1.4"
 __project__ = "FisherExact"
 __author__ = "Emmanuel Noutahi"
@@ -50,9 +53,6 @@ def setup_package():
     else:
         README = ""  # a placeholder, readme is generated on release
     print("\nVersion : %s\n" % __version__)
-        
-    from numpy.distutils.core import Extension as Ext
-    from numpy.distutils.core import setup
 
     fortran_extnsion = configuration()
 
