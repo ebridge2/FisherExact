@@ -15,7 +15,7 @@ except ImportError:
     ez_setup.use_setuptools()
     from setuptools import find_packages
     
-
+import setuptools
 setuptools.setup(
     setup_requires=[
         'numpy'
