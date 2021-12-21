@@ -15,11 +15,12 @@ except ImportError:
     ez_setup.use_setuptools()
     from setuptools import find_packages
     
-import setuptools
-setuptools.setup(
-    setup_requires=[
-        'numpy'
-    ],)
+try:
+    import numpy
+except ImportError;
+    from setuptools import dist
+    dist.Distribution().fetch_build_eggs(['numpy>=1.8.0'])
+    
 from numpy.distutils.core import Extension as Ext
 from numpy.distutils.core import setup
 
