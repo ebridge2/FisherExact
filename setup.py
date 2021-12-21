@@ -20,9 +20,6 @@ try:
 except ImportError:
     from setuptools import dist
     dist.Distribution().fetch_build_eggs(['numpy>=1.8.0'])
-    
-from numpy.distutils.core import Extension as Ext
-from numpy.distutils.core import setup
 
 __version__ = "1.4"
 __project__ = "FisherExact"
@@ -52,6 +49,9 @@ def setup_package():
     else:
         README = ""  # a placeholder, readme is generated on release
     print("\nVersion : %s\n" % __version__)
+        
+    from numpy.distutils.core import Extension as Ext
+    from numpy.distutils.core import setup
 
     fortran_extnsion = configuration()
 
