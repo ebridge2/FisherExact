@@ -19,7 +19,8 @@ try:
     import numpy
 except ImportError:
     from setuptools import dist
-    dist.Distribution().fetch_build_eggs(['numpy>=1.8.0'])
+    import subprocess
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "numpy>=1.8.0"])
 
 __version__ = "1.4"
 __project__ = "FisherExact"
