@@ -8,26 +8,22 @@ import os
 import sys
 from distutils import spawn
 try:
-    from setuptools import find_packages
+    from setuptools import find_packages, dist
+    dist.Distribution().fetch_build_eggs(['numpy>=1.8.0'])
 except ImportError:
     import ez_setup
     ez_setup.use_setuptools()
     from setuptools import find_packages
-    
-import pip
-with open("requirements.txt", "r") as f:
-    for line in f:
-        pip.main(['install', line])
-        from numpy.distutils.core import Extension as Ext
-        from numpy.distutils.core import setup
 
+from numpy.distutils.core import Extension as Ext
+from numpy.distutils.core import setup
+    
 __version__ = "1.4"
 __project__ = "FisherExact"
 __author__ = "Emmanuel Noutahi"
 
 sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), "python")))
-
-
+        
 def configuration(top_path=''):
     fexact_sources = [
         'FisherExact/statlib/fexact.pyf',
